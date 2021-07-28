@@ -1,0 +1,27 @@
+Consider a supermarket like Big Bazaar where they sell items by quantity and if a customer purchases more quantities, then the discounts will be applied to some items.
+
+Item                      Unit price        Discounted price
+————————————————————————————————————————————————————————————————————————
+Bread                     Rs. 60            3 for Rs. 150
+Eggs                       Rs. 40            2 for Rs. 70
+Milk                        Rs. 60
+Tea                         Rs. 150
+
+At the billing counter, the items are accepted in any order. For example, the order can be Eggs, Milk, Tea, Eggs, Eggs. Over here, the quantity of eggs is 3 and so the total price for eggs is calculated as follows: 
+1. For the first two eggs, the price would be Rs.70
+2. For the 3rd egg, the price would be Rs 40.
+So, the total price for eggs would be Rs. 110.
+
+Build a ruby program which will take input as the items separated by a comma and will calculate and print the total price and savings.
+
+Sample input string: Eggs,eggs,bread,milk,tea,bread,bread,bread,milk
+
+Item               Quantity       Price
+-------------------------------------------
+Bread                  4              Rs. 210
+Eggs                   2              Rs. 70
+Milk                   2              Rs. 120
+Tea                    1              Rs. 150
+
+Total price : Rs. 550
+Savings: Rs. 40
