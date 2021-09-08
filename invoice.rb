@@ -2,6 +2,7 @@ require 'terminal-table'
 
 class Product
   UNIT_PRICE = {'bread'=>60, 'egg'=>40, 'milk'=>60, 'tea'=>150 }
+  SALE_PRICE = {'bread'=> { quantity: 3, price: 150}, 'egg'=> { quantity: 2, price: 70} }
 end
 
 class LineItem
@@ -19,9 +20,9 @@ class LineItem
   def discounted_price
     self.discounted_total = case self.item_name
                             when 'bread'
-                              calculate_dicounted_price(self.quantity, self.unit_price, 3, 150)
+                              calculate_dicounted_price(self.quantity, self.unit_price, Product::SALE_PRICE['bread'][:quantity], Product::SALE_PRICE['bread'][:price])
                             when 'egg'
-                              calculate_dicounted_price(self.quantity, self.unit_price, 2, 70)
+                              calculate_dicounted_price(self.quantity, self.unit_price, Product::SALE_PRICE['egg'][:quantity], Product::SALE_PRICE['egg'][:price])
                             when 'milk'
                               calculate_dicounted_price(self.quantity, self.unit_price)
                             else
@@ -91,7 +92,7 @@ entered_items = []
   entered_items << gets.chomp()
 end
 
-p "Entered item: #{entered_items}"
+puts "Entered item: #{entered_items.join(', ')}"
 invoice = Invoice.new
 
 item_with_quantity = entered_items.uniq.inject({}) { |items, ele| items[ele] = entered_items.count(ele); items }
